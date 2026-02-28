@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --cream:   247 244 239;
+    --cream-2: 239 233 223;
+    --terra:   196 98 58;
+    --ink:     30 26 21;
+  }
+
+  * {
+    @apply border-cream-300;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
+           bg-terra text-white shadow-terra
+           hover:bg-terra-dark transition-all duration-200
+           hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
+           bg-white text-ink border border-cream-300
+           hover:bg-cream transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium
+           text-stone hover:text-ink hover:bg-cream-200 transition-colors;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl border border-cream-300 shadow-soft p-6;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-cream-300 bg-white
+           text-ink placeholder:text-stone
+           focus:outline-none focus:ring-2 focus:ring-terra/30 focus:border-terra
+           transition-all duration-200;
+  }
+
+  /* Label */
+  .label-text {
+    @apply text-sm font-semibold text-ink mb-1.5 block;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-bold
+           uppercase tracking-widest text-terra mb-4;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-5 h-px bg-terra;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
